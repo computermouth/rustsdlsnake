@@ -69,13 +69,14 @@ fn main() {
     let renderer = init_sdl();
     
     while !ps.quit {
-        ps = update(ps);
+        update(&mut ps);
         render(renderer, &ps);
     }
     unsafe { SDL_Quit() };
 }
 
-fn update(mut ps: ProgramState) -> ProgramState {
+fn update(ps: &mut ProgramState) {
+	
     // handle quitting
     let mut event = SDL_Event::default();
     let pending_events = 0 < unsafe { SDL_PollEvent(&mut event) };
@@ -110,7 +111,8 @@ fn update(mut ps: ProgramState) -> ProgramState {
         
         // check collision with self
         if ps.snake.contains(&next) {
-            return new_ps();
+			*ps = new_ps();
+			return;
         }
         
         ps.snake.insert(0, next);
@@ -132,7 +134,6 @@ fn update(mut ps: ProgramState) -> ProgramState {
     }
     
     ps.frame_i += 1;
-    ps
 }
 
 fn set_draw_color(renderer: *mut SDL_Renderer, r: u8, g: u8, b: u8){
