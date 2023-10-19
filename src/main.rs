@@ -113,9 +113,9 @@ pub fn main() {
         for s in snake.iter() {            
             let x: i32 = s.0 as i32 * 10 + 1;
             let y: i32 = s.1 as i32 * 10 + 1;
-            cvs.set_draw_color(Color::RGB(127, 0, 0));
-            cvs.fill_rect(Rect::new(x, y, 8, 8))
-                .unwrap();
+            // cvs.set_draw_color(Color::RGB(127, 0, 0));
+            // cvs.fill_rect(Rect::new(x, y, 8, 8))
+            //     .unwrap();
             cvs.set_draw_color(Color::RGB(255, 0, 0));
             cvs.draw_rect(Rect::new(x, y, 8, 8))
                 .unwrap();
@@ -126,9 +126,9 @@ pub fn main() {
 				if !apple[x][y] {continue}
 				let x: i32 = x as i32 * 10 + 1;
 				let y: i32 = y as i32 * 10 + 1;
-                cvs.set_draw_color(Color::RGB(0, 127, 0));
-                cvs.fill_rect(Rect::new(x, y, 8, 8))
-                    .unwrap();
+                // cvs.set_draw_color(Color::RGB(0, 127, 0));
+                // cvs.fill_rect(Rect::new(x, y, 8, 8))
+                //     .unwrap();
                 cvs.set_draw_color(Color::RGB(0, 255, 0));
                 cvs.draw_rect(Rect::new(x, y, 8, 8))
                     .unwrap();
